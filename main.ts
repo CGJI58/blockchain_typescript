@@ -1,33 +1,22 @@
-type SuperPrint = <T, M>(a: T[], b: M) => T;
+abstract class User {
+  constructor(
+    protected firstName: string,
+    protected lastName: string,
+    protected nickName: string
+  ) {}
+  abstract getFullName(): string;
+  abstract getnickName(): string;
+}
 
-const superPrint: SuperPrint = (a) => a[0];
+class Player extends User {
+  getFullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+  getnickName() {
+    return `nickname: ${this.nickName}`;
+  }
+}
 
-const a = superPrint([1, 2, 3, 4], false);
-const b = superPrint([true, false, true], 1);
-const c = superPrint(["a", "b", "c"], "hi");
-const d = superPrint([1, 2, true, false, "hello"], 1);
-c.toUpperCase();
-
-// type Player<E> = {
-//   name: string;
-//   extraInfo: E;
-// };
-// type NicoExtra = {
-//   favFood: string;
-// };
-
-// type NicoPlayer = Player<NicoExtra>;
-
-// const nico: NicoPlayer = {
-//   name: "nico",
-//   extraInfo: {
-//     favFood: "kimchi",
-//   },
-// };
-
-// const a = "hello";
-// const b = "bye";
-
-// function myName(a: string, b: string): string[] {
-//   return [a, b];
-// }
+const sunghun = new Player("sunghun", "choi", "cgj");
+sunghun.getFullName();
+sunghun.getnickName();
