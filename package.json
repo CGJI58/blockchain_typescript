@@ -1,0 +1,13 @@
+{
+  "name": "typescript__blockchain",
+  "version": "1.0.0",
+  "repository": "https://github.com/CGJI58/blockchain_typescript",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "CGJI58 <leemsk22@naver.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  }
+}
