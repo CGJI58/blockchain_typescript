@@ -1,9 +1,23 @@
-import { init, exit } from "myPackage";
+import crypto from "crypto";
 
-const myConfig = {
-  debug: true,
-  url: "asdf",
-};
+interface BlockShape {
+  hash: string;
+  prevHash: string;
+  height: number;
+  data: string;
+}
 
-init(myConfig);
-exit(1);
+class Block implements BlockShape {
+  public hash: string;
+  constructor(
+    public prevHash: string,
+    public height: number,
+    public data: string
+  ) {
+    this.hash = Block.calculateHash(prevHash, height, data);
+  }
+  static calculateHash(prevHash: string, height: number, data: string) {
+    const toHash = `${prevHash}${height}${data}`;
+    return crypto.createHash("sha256").update(toHash).digest("hex");
+  }
+}
